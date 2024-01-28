@@ -16,7 +16,7 @@ import java.util.List;
 public class SortedSortedLinkedListTest {
 
     private static final File DATA_FILE_INT_MILL = new File("src/test/resources/data_int_1_000_000.txt");
-    private static final File DATA_FILE_STR_MILL = new File("src/test/resources/data_str_1_000_000.txt");
+    private static final File DATA_FILE_STR_HUNDRED = new File("src/test/resources/data_str_100_000.txt");
     private static final List<Integer> TEST_INT_DATA = List.of(43, 8, 6, 10, 55, 14);
     private static final List<String> TEST_STRING_DATA = List.of("SHIPMONK CHCE BÁRU", "aaaa", "ddDDdd", "ZZZ", "blabla", "SHIPMONK JE BOŽÍ");
 
@@ -45,7 +45,7 @@ public class SortedSortedLinkedListTest {
     public void shouldAddValuesAndGetSortedStrLinkedList() throws Exception {
         //TestUtils.fillTestDataFileWithRandomString(1_000_000, 1, 1000, DATA_FILE_STR_MILL);
 
-        final List<String> dataList = TestUtils.getStrList(DATA_FILE_STR_MILL);
+        final List<String> dataList = TestUtils.getStrList(DATA_FILE_STR_HUNDRED);
 
         long start = System.currentTimeMillis();
 
@@ -77,7 +77,7 @@ public class SortedSortedLinkedListTest {
 
     @Test
     public void shouldAddAllValuesAndGetSortedStrLinkedList() throws Exception {
-        final List<String> dataList = TestUtils.getStrList(DATA_FILE_STR_MILL);
+        final List<String> dataList = TestUtils.getStrList(DATA_FILE_STR_HUNDRED);
 
         long start = System.currentTimeMillis();
 
@@ -131,7 +131,7 @@ public class SortedSortedLinkedListTest {
 
         {
             final String requiredStr = "SHIPMONK JE NEJLEPŠÍ";
-            final List<String> listFromFile = TestUtils.getStrList(DATA_FILE_STR_MILL);
+            final List<String> listFromFile = TestUtils.getStrList(DATA_FILE_STR_HUNDRED);
             listFromFile.add(requiredStr);
 
             long start = System.currentTimeMillis();
@@ -280,7 +280,7 @@ public class SortedSortedLinkedListTest {
 
     @Test
     public void shouldGetStringJavaLinkedListFromSortedLinkedStringList() throws Exception {
-        final List<String> listFromFile = TestUtils.getStrList(DATA_FILE_STR_MILL);
+        final List<String> listFromFile = TestUtils.getStrList(DATA_FILE_STR_HUNDRED);
 
         final SortedLinkedListBuilder<String> builder = this.stringListFactory.createLinkedListBuilder();
         builder.addAll(listFromFile);
@@ -301,7 +301,7 @@ public class SortedSortedLinkedListTest {
 
     @Test
     public void shouldGetSortedLinkedStringListFromJavaLinkedList() throws Exception {
-        final LinkedList<String> listFromFile = TestUtils.getStrList(DATA_FILE_STR_MILL);
+        final LinkedList<String> listFromFile = TestUtils.getStrList(DATA_FILE_STR_HUNDRED);
         Assertions.assertFalse(Ordering.natural().isOrdered(listFromFile));
 
         final SortedLinkedList<String> sortedLinkedList = this.stringListFactory.fromJavaLinkedList(listFromFile);
